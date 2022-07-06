@@ -1,5 +1,8 @@
 import React from 'react';
 import './App.css';
+import Button from "./components/Button.js";
+import Tile from "./components/Tile.js";
+import Field from "./components/Field.js";
 
 function App() {
     const [fruit, setFruit] = React.useState({
@@ -67,117 +70,107 @@ function App() {
         <section>
             <div>
                 <h2>🍓</h2>
-                <button
-                    type="button"
-                    className="strawberry"
-                    onClick={minusOne}
+                <Tile
+                    nameN="strawberry"
+                    functionP={minusOne}
                 >
                     -
-                </button>
+                </Tile>
                 <input
                     type="number"
                     name="strawberry"
                     value={fruit.strawberry}
                 />
-                <button
-                    type="button"
-                    className="strawberry"
-                    onClick={plusOne}
+                <Tile
+                    nameN="strawberry"
+                    functionP={plusOne}
                 >
                     +
-                </button>
+                </Tile>
             </div>
             <div>
                 <h2>🍌</h2>
-                <button
-                    type="button"
-                    className="banana"
-                    onClick={minusOne}
+                <Tile
+                    nameN="banana"
+                    functionP={minusOne}
                 >
                     -
-                </button>
+                </Tile>
                 <input
                     type="number"
                     name="banana"
                     value={fruit.banana}
                 />
-                <button
-                    type="button"
-                    className="banana"
-                    onClick={plusOne}
+                <Tile
+                    nameN="banana"
+                    functionP={plusOne}
                 >
                     +
-                </button>
+                </Tile>
             </div>
             <div>
                 <h2>🍏</h2>
-                <button
-                    type="button"
-                    className="apple"
-                    onClick={minusOne}
+                <Tile
+                    nameN="apple"
+                    functionP={minusOne}
                 >
                     -
-                </button>
+                </Tile>
                 <input
                     type="number"
                     name="apple"
                     value={fruit.apple}
                 />
-                <button
-                    type="button"
-                    className="apple"
-                    onClick={plusOne}
+                <Tile
+                    nameN="apple"
+                    functionP={plusOne}
                 >
                     +
-                </button>
+                </Tile>
             </div>
             <div>
                 <h2>🥝</h2>
-                <button
-                    type="button"
-                    className="kiwi"
-                    onClick={minusOne}
+                <Tile
+                    nameN="kiwi"
+                    functionP={minusOne}
                 >
                     -
-                </button>
+                </Tile>
                 <input
                     type="number"
                     name="kiwi"
                     value={fruit.kiwi}
                 />
-                <button
-                    type="button"
-                    className="kiwi"
-                    onClick={plusOne}
+                <Tile
+                    nameN="kiwi"
+                    functionP={plusOne}
                 >
                     +
-                </button>
+                </Tile>
             </div>
-            <button
+            <Button
                 id="reset-btn"
                 type="button"
-                onClick={resetFruit}
+                functiontype={resetFruit}
             >
                 Reset
-            </button>
+            </Button>
         </section>
         <form onSubmit={logForm}>
-            <label htmlFor="name-field">Naam
-            <input
-                type="text"
-                name="name"
-                id="name-field"
-                onChange={handleChange}
-            />
-            </label>
-            <label htmlFor="surname-field">Achternaam
-            <input
-                type="text"
-                name="surname"
-                id="surname-field"
-                onChange={handleChange}
-            />
-            </label>
+            <Field
+                idField="name-field"
+                names="name"
+                handleChanges={handleChange}
+            >
+                Naam
+            </Field>
+            <Field
+                idField="surname-field"
+                names="surname"
+                handleChanges={handleChange}
+            >
+                Achternaam
+            </Field>
             <label htmlFor="age-field">Leeftijd
             <input
                 type="number"
@@ -186,14 +179,13 @@ function App() {
                 onChange={handleChange}
             />
             </label>
-            <label htmlFor="zip-field">Postcode
-            <input
-                type="text"
-                name="zipcode"
-                id="zip-field"
-                onChange={handleChange}
-            />
-            </label>
+            <Field
+                idField="zip-field"
+                names="zipcode"
+                handleChanges={handleChange}
+            >
+                Postcode
+            </Field>
             <label htmlFor="delivery-field">Bezorgfrequentie
             <select name="delivery" id="delivery-field" onChange={handleChange}>
                 <option value="every-week">Iedere week</option>
@@ -219,11 +211,12 @@ function App() {
             />
                 Ik ga akkoord met de voorwaarden
             </label>
-            <button
+            <Button
+                id="send-btn"
                 type="submit"
             >
                 Verzend
-            </button>
+            </Button>
 
         </form>
     </>

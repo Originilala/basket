@@ -1,0 +1,11 @@
+#reset-btn {
+    width: 50%;
+    min-width: 700px;
+    border: 1px solid darkgray;
+    border-radius: 3px;
+    padding: 5px 30px;
+}
+
+#send-btn {
+    padding: 2px 5px;
+}

@@ -6,9 +6,25 @@ function App() {
         strawberry: 0,
         banana: 0,
         apple: 0,
-        kiwi: 0
+        kiwi: 0,
+        name: '',
+        surname: '',
+        age: 0,
+        zipcode: '',
+        delivery: 'every-week',
+        timeslot: 'daytime',
+        message: '',
+        terms: false,
+
     });
 
+    function handleChange(e) {
+        const value = e.target.type === "checkbox" ? e.target.checked : e.target.value;
+        setFruit({
+            ...fruit,
+            [e.target.name]: value
+        })
+    };
 
     function minusOne(e) {
         e.preventDefault();
@@ -33,11 +49,17 @@ function App() {
     function resetFruit(e) {
         e.preventDefault();
         setFruit({
+            ...fruit,
             strawberry: 0,
             banana: 0,
             apple: 0,
             kiwi: 0
         })
+    }
+
+    function logForm(e) {
+        e.preventDefault();
+        console.log(fruit);
     }
   return (
     <>
@@ -139,6 +161,71 @@ function App() {
                 Reset
             </button>
         </section>
+        <form onSubmit={logForm}>
+            <label htmlFor="name-field">Naam
+            <input
+                type="text"
+                name="name"
+                id="name-field"
+                onChange={handleChange}
+            />
+            </label>
+            <label htmlFor="surname-field">Achternaam
+            <input
+                type="text"
+                name="surname"
+                id="surname-field"
+                onChange={handleChange}
+            />
+            </label>
+            <label htmlFor="age-field">Leeftijd
+            <input
+                type="number"
+                name="age"
+                id="age-field"
+                onChange={handleChange}
+            />
+            </label>
+            <label htmlFor="zip-field">Postcode
+            <input
+                type="text"
+                name="zipcode"
+                id="zip-field"
+                onChange={handleChange}
+            />
+            </label>
+            <label htmlFor="delivery-field">Bezorgfrequentie
+            <select name="delivery" id="delivery-field" onChange={handleChange}>
+                <option value="every-week">Iedere week</option>
+                <option value="other-week">Om de week</option>
+                <option value="every-month">Iedere maand</option>
+            </select>
+            </label>
+            <label htmlFor="day-time">
+            <input type="radio" name="timeslot" id="day-time" value="day-time" onChange={handleChange}/>
+            Overdag</label>
+            <label htmlFor="night-time">
+            <input type="radio" name="timeslot" id="night-time" value="night-time" onChange={handleChange}/>
+            's Avonds</label>
+            <label htmlFor="message-field">Opmerking
+            <textarea name="message" id="message-field" cols="30" rows="10" onChange={handleChange}></textarea>
+            </label>
+            <label htmlFor="terms-field">
+            <input
+                type="checkbox"
+                name="terms"
+                id="terms-field"
+                onChange={handleChange}
+            />
+                Ik ga akkoord met de voorwaarden
+            </label>
+            <button
+                type="submit"
+            >
+                Verzend
+            </button>
+
+        </form>
     </>
   );
 }
